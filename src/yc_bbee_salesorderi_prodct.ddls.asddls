@@ -4,7 +4,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'CDS Consumption salesorderitem with product'
 @Metadata.ignorePropagatedAnnotations: true
-define view YC_BBEE_SALESORDERI_PRODCT as select from YI_BBEE_SALESORDER as ITEM left outer to one join YI_BBEE_PRODUCT as PROD
+define view YC_BBEE_SALESORDERI_PRODCT as select from YI_BBEE_SALESORDERITEM as ITEM left outer to one join YI_BBEE_PRODUCT as PROD
 on PROD.Product = ITEM.Product
 {
     key ITEM.Salesorder,

@@ -2,26 +2,24 @@
 @AbapCatalog.compiler.compareFilter: true
 @AbapCatalog.preserveKey: true
 @AccessControl.authorizationCheck: #NOT_REQUIRED
-@EndUserText.label: 'CDS Interface for YBBEE_SALESORDTM'
+@EndUserText.label: 'CDS Interface for YBBEE_SALESOORDER'
 @Metadata.ignorePropagatedAnnotations: true
-define view YI_BBEE_SALESORDER as select from ybbee_salesordtm
-
-association [0..1] to YI_BBEE_PRODUCT as _Product on $projection.Product = _Product.Product
+define view YI_BBEE_SALESORDER as select from ybbee_salesorder
+association [0..*] to YI_BBEE_SALESORDERITEM as _Item on $projection.Salesorder = _Item.Salesorder
 
 {
     key salesorder as Salesorder,
-    key salesorderitem as Salesorderitem,
-    product as Product,
-    orderquantity as Orderquantity,
-    orderquantityunit as Orderquantityunit,
-    netamount as Netamount,
-    transactioncurrency as Transactioncurrency,
-    creationdate as Creationdate,
-    createdbyusesr as Createdbyusesr,
+    salesordertype as Salesordertype,
+    soldtoparty as Soldtoparty,
+    salesorganization as Salesorganization,
+    distributionchannel as Distributionchannel,
+    organizationdivision as Organizationdivision,
+    deliverystatus as Deliverystatus,
+    deletionindicator as Deletionindicator,
+    createdbyuser as Createdbyuser,
     creationdatetime as Creationdatetime,
     lastchangedbyuser as Lastchangedbyuser,
-    lastchangeddatetime as Lastchangeddatetime,
+    lastchangedatetime as Lastchangedatetime,
     
-    /** Assoz. */
-    _Product
+    _Item
 }
